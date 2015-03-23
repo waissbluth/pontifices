@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  papa: MyString
+  pontifice: MyString
+  active: false
+
+two:
+  papa: MyString
+  pontifice: MyString
+  active: false

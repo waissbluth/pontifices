@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Papa:
+  = @translation.papa
+%p
+  %b Pontifice:
+  = @translation.pontifice
+%p
+  %b Active:
+  = @translation.active
+
+= link_to 'Edit', edit_translation_path(@translation)
+\|
+= link_to 'Back', translations_path
