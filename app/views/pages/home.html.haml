@@ -4,3 +4,11 @@
 
 .load Load
 
+
+= simple_form_for Translation.new, remote: true do |f|
+  .field
+    = f.input :papa
+  .field
+    = f.input :pontifice
+  .actions
+    = f.submit 'Agregar'

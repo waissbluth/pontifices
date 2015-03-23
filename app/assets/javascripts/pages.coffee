@@ -18,8 +18,14 @@ more = ->
     show_pontifice()
 
 $ ->
+  $.ajaxSetup
+    dataType: 'json'
+
   load()
   $('.load').click(more)
+  $('.translation').click(more)
 
-  $('.translation').click ->
+
+  $('#new_translation').on 'ajax:success', (e, data, status, xhr) ->
+    $(@).find('input[type=text]').val('')
 
