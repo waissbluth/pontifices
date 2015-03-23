@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150323020612) do
   create_table "translations", force: :cascade do |t|
     t.string   "papa"
     t.string   "pontifice"
-    t.boolean  "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "active",     default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end

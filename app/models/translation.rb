@@ -1,5 +1,6 @@
 class Translation < ActiveRecord::Base
-  validate [:papa, :pontifice], presence: true
+  validates :papa, presence: true
+  validates :pontifice, presence: true
 
   scope :active, -> {where(active: true)}
 end
