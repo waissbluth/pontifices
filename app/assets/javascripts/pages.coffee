@@ -8,9 +8,18 @@ load = ->
       $('.translation').find('.papa').text(data.papa)
       $('.translation').find('.pontifice').hide().text(data.pontifice)
 
+show_pontifice= ->
+  $('.translation').find('.pontifice').fadeIn()
+
+more = ->
+  if $('.translation').find('.pontifice').is(':visible')
+    load()
+  else
+    show_pontifice()
+
 $ ->
   load()
-  $('.load').click(load)
+  $('.load').click(more)
 
   $('.translation').click ->
-    $(@).find('.pontifice').fadeIn()
+
