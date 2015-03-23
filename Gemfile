@@ -57,15 +57,6 @@ group :production, :staging do
   gem 'rails_12factor'
 end
 
-
-
-#For S3 asset hosting
-gem 'paperclip', '~> 4.2'
-gem 'aws-sdk', '< 2.0'
-
-# Assets to S3
-gem 'asset_sync'
-
 #For markdown parsing
 gem 'bluecloth'
 
