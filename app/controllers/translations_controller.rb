@@ -12,6 +12,10 @@ class TranslationsController < ApplicationController
   def show
   end
 
+  def random
+    @translation = Translation.active.random.take
+  end
+
   # GET /translations/new
   def new
     @translation = Translation.new
