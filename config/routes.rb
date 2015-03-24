@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'pages/home'
+  devise_for :users
 
   resources :translations do
     get 'random', on: :collection

@@ -1,5 +1,6 @@
 class TranslationsController < ApplicationController
   before_action :set_translation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:random, :create]
 
   # GET /translations
   # GET /translations.json
@@ -73,6 +74,8 @@ class TranslationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def translation_params
-      params.require(:translation).permit(:papa, :pontifice, :active)
+      whitelisted = params.require(:translation).permit(:papa, :pontifice, :active)
+      whitelisted[:active] = false unless current_user.admin
+      whitelisted
     end
 end

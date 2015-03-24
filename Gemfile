@@ -62,8 +62,6 @@ gem 'bluecloth'
 
 #Authentication
 gem 'devise'
-gem 'devise-async'
-gem 'cancancan', '~> 1.8'
 
 #For Memcachier
 gem 'memcachier'
