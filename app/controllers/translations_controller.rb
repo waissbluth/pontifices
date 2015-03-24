@@ -15,6 +15,7 @@ class TranslationsController < ApplicationController
 
   def random
     @translation = Translation.active.random.take
+    render json: @translation, only: [:papa, :pontifice]
   end
 
   # GET /translations/new
