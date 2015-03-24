@@ -3,4 +3,5 @@ class Translation < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
   scope :random, -> { order('random()') }
+  scope :sorted, -> { order(:papa)}
 end
