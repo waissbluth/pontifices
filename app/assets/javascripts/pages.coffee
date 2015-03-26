@@ -25,10 +25,10 @@ show_pontifice = ->
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
     show_next()
-    $(@).html('Mostrar')
+    $('.load').html('Mostrar')
   else
     show_pontifice()
-    $(@).html('Siguiente')
+    $('.load').html('Siguiente')
 
 $ ->
   load()
