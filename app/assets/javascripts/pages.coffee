@@ -2,25 +2,35 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+current = -1
+translations = []
+
 load = ->
+  $.ajaxSetup
+    dataType: 'json'
   $.get '/translations/random.json',
     (data) ->
-      $('.translation').find('.papa').text(data.papa)
-      $('.translation').find('.pontifice').hide().text(data.pontifice)
+      translations = data
+      show_next()
 
-show_pontifice= ->
-  $('.translation').find('.pontifice').fadeIn()
+
+show_next = ->
+  current = (current + 1)%translations.length
+  $('.translation').find('.papa').html(translations[current].papa).fadeIn('slow')
+  $('.translation').find('.pontifice').stop().hide()
+
+show_pontifice = ->
+  $('.translation').find('.pontifice').html(translations[current].pontifice).stop().fadeIn()
 
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
-    load()
+    show_next()
+    $(@).html('Mostrar')
   else
     show_pontifice()
+    $(@).html('Siguiente')
 
 $ ->
-  $.ajaxSetup
-    dataType: 'json'
-
   load()
   $('.load').click(more)
   $('.translation').click(more)
