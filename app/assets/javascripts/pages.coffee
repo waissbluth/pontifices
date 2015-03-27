@@ -20,8 +20,8 @@ show_next = ->
   $('.translation').find('.pontifice, .tweet').stop().hide()
 
 show_pontifice = ->
-  $('.translation').find('.pontifice').html(translations[current].pontifice).stop().fadeIn()
-  $('.translation').find('.tweet').fadeIn()
+  $('.translation').find('.pontifice').html(translations[current].pontifice).stop().fadeIn('slow')
+  $('.translation').find('.tweet').stop().delay(1000).fadeIn('slow')
 
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
