@@ -35,7 +35,7 @@ tweet = (e) ->
   e.stopPropagation()
   url = encodeURIComponent 'http://www.pontifice.cl'
   message = encodeURIComponent translations[current].papa + ': ' + translations[current].pontifice
-  url = "https://twitter.com/intent/tweet?url=#{url}&text=#{message}&hashtags=pontifices"
+  url = "https://twitter.com/intent/tweet?url=#{url}&text=#{message}&hashtags=pontífices"
   openPopUp url
 
 openPopUp = (url) ->
