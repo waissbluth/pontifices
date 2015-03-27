@@ -6,6 +6,7 @@
       %th Papa
       %th Pontifice
       %th Active
+      %th Allowed First
       %th
       %th
 
@@ -15,6 +16,7 @@
         %td= translation.papa
         %td= translation.pontifice
         %td= boolean_icon translation.active
+        %td= boolean_icon translation.allowed_first
         %td= link_to 'Edit', edit_translation_path(translation), class: 'btn btn-xs'
         %td= link_to 'Destroy', translation, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-xs btn-danger'
 

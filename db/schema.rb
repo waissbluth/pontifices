@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324135455) do
+ActiveRecord::Schema.define(version: 20150327002411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,13 @@ ActiveRecord::Schema.define(version: 20150324135455) do
   create_table "translations", force: :cascade do |t|
     t.string   "papa"
     t.string   "pontifice"
-    t.boolean  "active",     default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "active",        default: false, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "allowed_first", default: true
   end
+
+  add_index "translations", ["allowed_first"], name: "index_translations_on_allowed_first", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
