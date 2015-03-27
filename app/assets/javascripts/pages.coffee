@@ -31,11 +31,11 @@ show_pontifice = ->
 
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
+    increment_current_by(1)
     show_papa()
     trackEvent ['Pontifice', 'Next']
     $('.load').html('Mostrar')
   else
-    increment_current_by(1)
     show_pontifice()
     $('.load').html('Siguiente')
     trackEvent ['Pontifice', 'Show']
