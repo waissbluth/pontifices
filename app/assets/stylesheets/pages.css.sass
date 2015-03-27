@@ -3,11 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'compass'
 
+body
+  @media (max-width: 940px)
+    font-size: 0.9em
+  @media (max-width: 600px)
+    font-size: 0.8em
+    .translation
+      margin-top: 24px
+      min-height: 5.5em
+    .load
+      line-height: 2.5em
+  @media (max-width: 530px)
+
+  @media (max-width: 400px)
+    font-size: 0.7em
+
 .translation
   text-align: center
   font-size: 4em
   margin-top: 100px
-  height: 4em
+  min-height: 4.5em
   cursor: pointer
   font-weight: 100
   div
