@@ -14,7 +14,9 @@ load = ->
       show_papa()
 
 increment_current_by = (num) ->
-  current = Math.abs (current + num)%translations.length
+  current = (current + num)%translations.length
+  if current < 0
+    current = translations.length + current
 
 show_papa = ->
   $('.translation').find('.papa').html(translations[current].papa).fadeIn('slow')
