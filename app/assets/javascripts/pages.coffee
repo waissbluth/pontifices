@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-current = -1
+current = 0
 translations = []
 
 load = ->
@@ -11,12 +11,16 @@ load = ->
   $.get '/translations/random.json',
     (data) ->
       translations = data
-      show_next()
+      show_papa()
 
+increment_current_by = (num) ->
+  current = Math.abs (current + num)%translations.length
 
-show_next = ->
-  current = (current + 1)%translations.length
+show_papa = ->
   $('.translation').find('.papa').html(translations[current].papa).fadeIn('slow')
+  hide_pontifice()
+
+hide_pontifice = ->
   $('.translation').find('.pontifice, .tweet').stop().hide()
 
 show_pontifice = ->
@@ -25,13 +29,22 @@ show_pontifice = ->
 
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
-    show_next()
+    show_papa()
     trackEvent ['Pontifice', 'Next']
     $('.load').html('Mostrar')
   else
+    increment_current_by(1)
     show_pontifice()
     $('.load').html('Siguiente')
     trackEvent ['Pontifice', 'Show']
+
+back = ->
+  increment_current_by(-1)
+  hide_pontifice()
+  show_papa()
+  $('.load').html('Mostrar')
+  trackEvent ['Pontifice', 'Back']
+
 
 tweet = (e) ->
   e.stopPropagation()
@@ -54,6 +67,11 @@ $ ->
   $('.load').click(more)
   $('.translation').click(more)
   $('.tweet').click(tweet)
+  $('body').keyup (e) ->
+    if(e.keyCode == 37) # left arrow
+      back()
+    else if(e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 39) # Enter, space or right arrow
+      more()
 
 
   $('#new_translation').on 'ajax:success', (e, data, status, xhr) ->
