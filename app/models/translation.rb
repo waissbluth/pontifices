@@ -5,6 +5,6 @@ class Translation < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
   scope :random, -> { order('random()') }
-  scope :random_safe, -> { order('allowed_first, random()') }
+  scope :safe_random, -> { order('allowed_first, random()') }
   scope :sorted, -> { order(:active, :papa)}
 end
