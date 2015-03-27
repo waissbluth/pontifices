@@ -5,8 +5,10 @@
 
 .load Mostrar
 
-
-= simple_form_for Translation.new, remote: true, html: { class: 'form-inline' } do |f|
-  = f.input :papa, label: false, placeholder: 'i.e. Papa frita'
-  = f.input :pontifice, label: false, placeholder: 'i.e. Pontífice en aprietos'
-  = f.submit 'Agregar', class: 'btn'
+%footer
+  = simple_form_for Translation.new, remote: true, html: { class: 'form-inline' } do |f|
+    = f.input :papa, label: false, placeholder: 'i.e. Papa asada'
+    = f.input :pontifice, label: false, placeholder: 'i.e. Pontífice acalorado'
+    = f.submit 'Agregar', class: 'btn'
+  .copyright!
+    <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.pontifice.cl" property="cc:attributionName" rel="cc:attributionURL">Pontífices</a> está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">licencia de Creative Commons Reconocimiento 4.0 Internacional</a>. Muchas gracias por todos los aportes anónimos.
