@@ -26,10 +26,12 @@ show_pontifice = ->
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
     show_next()
+    trackEvent ['Pontifice', 'Next']
     $('.load').html('Mostrar')
   else
     show_pontifice()
     $('.load').html('Siguiente')
+    trackEvent ['Pontifice', 'Show']
 
 tweet = (e) ->
   e.stopPropagation()

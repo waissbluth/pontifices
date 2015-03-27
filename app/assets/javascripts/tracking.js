@@ -6,3 +6,8 @@
 ga('create', 'UA-61068424-1', 'auto');
 ga('send', 'pageview');
 ga('set', 'dimension1', window.devicePixelRatio || 1);
+
+trackEvent = function(options){
+    var category = options[0], action = options[1], label = options[2], value = options[3];
+    ga('send', 'event', category, action, label, value);
+};
