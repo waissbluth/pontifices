@@ -17,10 +17,11 @@ load = ->
 show_next = ->
   current = (current + 1)%translations.length
   $('.translation').find('.papa').html(translations[current].papa).fadeIn('slow')
-  $('.translation').find('.pontifice').stop().hide()
+  $('.translation').find('.pontifice, .tweet').stop().hide()
 
 show_pontifice = ->
   $('.translation').find('.pontifice').html(translations[current].pontifice).stop().fadeIn()
+  $('.translation').find('.tweet').fadeIn()
 
 more = ->
   if $('.translation').find('.pontifice').is(':visible')
@@ -30,10 +31,26 @@ more = ->
     show_pontifice()
     $('.load').html('Siguiente')
 
+tweet = (e) ->
+  e.stopPropagation()
+  url = encodeURIComponent 'http://www.pontifice.cl'
+  message = encodeURIComponent translations[current].papa + ': ' + translations[current].pontifice
+  url = "https://twitter.com/intent/tweet?url=#{url}&text=#{message}&hashtags=pontifice"
+  openPopUp url
+
+openPopUp = (url) ->
+  width = 575
+  height = 310
+  left = ($(window).width() - width) / 2
+  top = ($(window).height() - height) / 2
+  opts = 'status=1' + ',width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+  window.open(url, '_blank', opts)
+
 $ ->
   load()
   $('.load').click(more)
   $('.translation').click(more)
+  $('.tweet').click(tweet)
 
 
   $('#new_translation').on 'ajax:success', (e, data, status, xhr) ->
