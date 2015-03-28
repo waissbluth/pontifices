@@ -75,7 +75,7 @@ class TranslationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def translation_params
-      whitelisted = params.require(:translation).permit(:papa, :pontifice, :active, :allowed_first)
+      whitelisted = params.require(:translation).permit(:papa, :pontifice, :active, :allowed_first, :bad)
       whitelisted[:active] = false unless current_user.try(:admin)
       whitelisted
     end

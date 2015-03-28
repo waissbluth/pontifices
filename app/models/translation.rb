@@ -4,8 +4,8 @@ class Translation < ActiveRecord::Base
   validates :pontifice, uniqueness: {scope: :papa}
 
   scope :active, -> { where(active: true) }
-  scope :random, -> { order('random()') }
-  scope :sorted, -> { order(:active, :papa)}
+  scope :random, -> { order('bad asc, random()') }
+  scope :sorted, -> { order(:active, :bad, :papa)}
 
   def self.safe_random
     result = []
