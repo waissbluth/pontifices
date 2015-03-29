@@ -64,7 +64,7 @@ openPopUp = (url) ->
   opts = 'status=1' + ',width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
   window.open(url, '_blank', opts)
 
-$ ->
+$(document).on "ready page:load", ->
   load()
   $('.load').click(more)
   $('.translation').click(more)
